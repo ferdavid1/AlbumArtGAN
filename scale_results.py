@@ -1,14 +1,14 @@
-import PIL
+from PIL import Image
 import os 
 
-def scale(filename):
-	img = PIL.open(filename)
-	img.scale(1111)
-	return scaled, filename
-def write(scaled, filename):
-	img.save('scaled_results'+filename)
+def scale(filename, outfilename):
+	img = Image.open(filename)
+	img = img.resize((1400,1400), Image.ANTIALIAS)
+	img.save('scaled_results/' + outfilename)
+	return img
+
 if __name__ == '__main__':
 	os.chdir('images/')
-	for img in os.listdir('results/'):
-		scaled, filename = scale('results/' + str(img))
-		write(scaled, filename)
+	for imgname in os.listdir('results/'):
+		scaled = scale('results/' + imgname, imgname.strip('.png') + '_scaled.png')
+		print("Scaled: ", imgname)
