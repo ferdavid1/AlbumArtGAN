@@ -1,14 +1,15 @@
-from PIL import Image
+from PIL import Image, ImageEnhance
+import numpy as np
+import matplotlib.pyplot as plt 
 import os 
 
 def scale(filename, outfilename):
 	img = Image.open(filename)
 	img = img.resize((1400,1400), Image.ANTIALIAS)
-	img.save('scaled_results/' + outfilename)
-	return img
-
+	contrast = ImageEnhance.Contrast(img) # enhance contrast
+	contrast.enhance(5).save('scaled_results/' + outfilename)
 if __name__ == '__main__':
-	os.chdir('images/lr-0002') # change lr-0002 to whichever trial run you're on
+	os.chdir('images/lr-001') # change lr-00XXX to whichever trial run you're on
 	for imgname in os.listdir('results/'):
 		scaled = scale('results/' + imgname, imgname.strip('.png') + '_scaled.png')
 		print("Scaled: ", imgname)
