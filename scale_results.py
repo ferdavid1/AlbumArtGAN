@@ -1,6 +1,4 @@
 from PIL import Image, ImageEnhance
-import numpy as np
-import matplotlib.pyplot as plt 
 import os 
 
 def scale(filename, outfilename):
