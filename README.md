@@ -16,3 +16,5 @@
 	- from lr = 0.0002:
 		- 1200_scaled.png
 		- 2000_scaled.png
+		- 3200_scaled.png
+		- 5200_scaled.png
